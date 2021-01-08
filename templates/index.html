@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Todo App</title>
+</head>
+<style>
+    li{
+        list-style: none;
+    }
+    body{
+        background-color: antiquewhite;
+        text-align: center;
+    }
+</style>
+<body>
+    <h2>Todo Add</h2>
+    <form method="post" action="/new">
+        <p>内容<input type="text" name="text" size="30" placeholder="todo" ></p>
+        <p>状態
+            <select name="status">
+                <option value="未実行">未実行</option>
+            </select>
+        </p>
+        <p><input type="submit" value="追加"></p>
+    </form>
+    
+    <ul>
+        {{ range .todos }}
+            <li>・{{ .Text }}  ~~  {{ .Status }}
+                <label><a class="btn btn-warning" href="/detail/{{.ID}}">編集</a></label>
+                <label><a class="btn btn-danger"href="/delete_check/{{.ID}}">削除</a></label>
+            </li>
+        {{end}}
+    </ul>
+</body>
+</html>

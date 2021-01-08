@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Todo App</title>
+</head>
+<style>
+    li{
+        list-style: none;
+    }
+    body{
+        background-color: antiquewhite;
+        text-align: center;
+    }
+</style>
+<body>
+    <h1>Todo Delete</h1>
+    <p>本当に削除しますか？</p>
+    <ul>
+        <li>内容： {{.todo.Text}}</li>
+        <li>状態： {{.todo.Status}}</li>
+        <li>作成時間： {{.todo.CreatedAt}}</li>
+    </ul>
+    <form method="post" action="/delete/{{.todo.ID}}">
+        <p><input type="submit" value="削除"></p>
+    </form>
+    <p><a href="/"><button class="btn btn-primary">戻る</button></a></p>
+</body>
+</html>
